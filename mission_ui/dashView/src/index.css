@@ -1,7 +1,0 @@
-body{
-  background: linear-gradient(to bottom, #010C19 0%, #053D7F 100%);
-  min-height: 100vh;
-  min-width: 100vw;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
