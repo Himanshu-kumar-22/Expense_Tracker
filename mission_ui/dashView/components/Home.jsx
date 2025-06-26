@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar.jsx';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -18,70 +18,113 @@ const Home = () => {
     color: 'white',
   });
 
+  //button text change
+  const [mystyle, setMyStyle] = useState({
+    color: 'white',
+  })
+  const TextlightMode = () => {
+    if (mystyle.color === 'white') {
+      setMyStyle({
+        color: '#032854',
+      })
+    }
+    else {
+      setMyStyle({
+        color: 'white',
+      })
+    }
+  }
+
+  // button background change
+  const [btnBackground, setbtnBackground] = useState({
+    backgroundColor: '#043978',
+  })
+  const Textbackground = () => {
+    if (btnBackground.backgroundColor === '#043978') {
+      setbtnBackground({
+        backgroundColor: '#C0C7E2',
+      })
+    }
+    else {
+      setbtnBackground({
+        backgroundColor: '#043978',
+      })
+    }
+  }
+
+  //cards light & Dark mode
+  const [cardColor, setCardColor] = useState({
+    background: '#04356E',
+    color: 'white'
+  });
+
+  const Cardbackground = () => {
+    if (cardColor.background === '#04356E') {
+      setCardColor({
+        background: '#A2B5CE',
+        color: '#1F3F5E'
+      });
+    } else {
+      setCardColor({
+        background: '#04356E',
+        color: 'white'
+      });
+    }
+  };
+
+  
+  //Button border
+  const [btnborder, setbtnborder] = useState({
+    borderWidth: '1px',
+    borderColor: 'white',
+  })
+  const btnborderColor = () => {
+    if (btnborder.borderColor === 'white') {
+      setbtnborder({
+        borderColor: '#032854',
+      });
+    } else {
+      setbtnborder({
+        borderColor: 'white'
+      });
+    }
+  }
+  useEffect(() => {
+    if (darkMode) {
+      document.body.style.background = 'linear-gradient(to bottom, #9EB3CC 0%, #C2C8E4 100%)';
+    } else {
+      document.body.style.background = 'linear-gradient(to bottom, #010C19 0%, #053D7F 100%)';
+    }
+
+    document.body.style.minHeight = '100vh';
+    document.body.style.minWidth = '100vw';
+    document.body.style.overflowY = 'auto';
+    document.body.style.overflowX = 'hidden';
+  }, [darkMode]);
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg px-4">
-        <div className="container-fluid d-flex overflow-hidden flex-wrap justify-content-between align-items-center" style={{ rowGap: '1rem' }}>
 
-          <div className='d-flex flex-grow-1 flex-wrap align-items-center' style={{ gap: '0.1rem', fontFamily: 'Poppins, sans-serif', minWidth: 0 }}>
-            {/* Logo + Title */}
-            <div className="d-flex align-items-center flex-shrink-0 me-4">
-              <a href='/'><img src="Rectangle.png" alt="Logo" width={60} height={60}/></a>
-              <a className="navbar-brand text-white" style={{ fontSize: '26px' }} href="/">
-                Expense Tracker
-              </a>
-            </div>
+      <Navbar
+        darkMode={darkMode}
+        toggleMode={() => {
+          toggleMode();
+          TextlightMode();
+          Textbackground();
+          Cardbackground();
+          btnborderColor();
+        }}
+        mystyle={mystyle}
+        btnborder={btnborder}
+        btnBackground={btnBackground}
+        underlining={underlining}
+        active={active}
+        setActive={setActive}
+      />
 
-            {/* Nav Links */}
-            <div className="d-flex align-items-center flex-wrap" style={{ gap: '2rem', fontSize: '16px', whiteSpace: 'nowrap' }}>
-              <a className="nav-link text-white" style={underlining('Home')} onClick={() => setActive('Home')} href="/">Home</a>
-              <a className="nav-link text-white" style={underlining('Features')} onClick={() => setActive('Features')} href="#">Features</a>
-              <a className="nav-link text-white" style={underlining('Contact')} onClick={() => setActive('Contact')} href="#">Contact</a>
-            </div>
-          </div>
-
-          <div className='d-flex flex -wrap align-items-center gap-3 mt-lg-0' style={{ fontFamily: 'poppins', flexShrink: 0 }}>
-            {/* Toggle */}
-            <div
-              onClick={toggleMode}
-              style={{
-                cursor: 'pointer',
-                width: '50px',
-                height: '26px',
-                backgroundColor: darkMode ? '#222' : '#ddd',
-                borderRadius: '20px',
-                border: `1px solid ${darkMode ? 'white' : '#A1B5CD'}`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: darkMode ? 'flex-end' : 'flex-start',
-                padding: '4px',
-                transition: 'all 0.6s ease-in-out',
-              }}
-            >
-              {darkMode ? (
-                <FaMoon color="#A1B5CD" size={18} />
-              ) : (
-                <FaSun color="#C1C7E3" size={18} />
-              )}
-            </div>
-            <div>
-
-              <div>
-                {/* Sign In/Sign Up Button */}
-                <button
-                  className="btn btn-primary rounded-pill px-4"
-                  style={{ fontSize: '14px', fontFamily: 'poppins' }}
-                >
-                  Sign in/Sign up
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
-      <div className="position-relative text-white d-flex justify-content-center overflow-hidden" style={{ minHeight: '100vh', paddingTop: '4rem'}}>
+      <div className="position-relative text-white d-flex justify-content-center overflow-hidden" style={{ minHeight: '100vh', paddingTop: '4rem' }}>
         <img
           src="/bkgGif.gif"
           alt="Background"
@@ -114,16 +157,16 @@ const Home = () => {
             zIndex: 2,
           }}
         >
-          <span style={{ display: 'block', width: '100%'}}>
-            <h1 className="display-2 mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+          <span style={{ display: 'block', width: '100%' }}>
+            <h1 className="display-2 mb-3" style={{ ...mystyle, fontFamily: 'Bebas Neue, sans-serif' }}>
               MAKING SHARED <br /> EXPENSES EFFORTLESS
             </h1>
-            <p className="lead text-light" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <p className="lead" style={{ ...mystyle, fontFamily: 'Poppins, sans-serif' }}>
               Track shared expenses with roommates, friends, and travel groups effortlessly.
             </p>
             <button
-              className="btn btn-outline-light rounded-pill mt-4 px-4 py-2"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
+              className="btn rounded-pill mt-4 px-4 py-2"
+              style={{ ...btnborder, ...btnBackground, ...mystyle, fontFamily: 'Poppins, sans-serif' }}
             >
               Ready to split smarter?
             </button>
@@ -133,19 +176,18 @@ const Home = () => {
       </div>
 
       {/* cards */}
-      <div className="d-flex align-items-center flex-wrap justify-content-center" style={{ height: '300px', zIndex: 1, gap: '10rem', marginTop: '-200px', rowGap: '2rem'}}>
+      <div className="d-flex align-items-center flex-wrap justify-content-center" style={{ height: '300px', zIndex: 1, gap: '10rem', marginTop: '-200px', rowGap: '2rem' }}>
         <div
           style={{
+            ...cardColor,
             height: '300px',
             width: '250px',
-            background: '#04356E',
             borderRadius: '24px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            color: 'white',
             opacity: 0.7,
             zIndex: 1,
             // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
@@ -167,7 +209,7 @@ const Home = () => {
               lineHeight: '28px'
             }}
           >
-            Get notified who owes<br />whom
+            Get notified who owes
           </div>
 
           {/* Arrow */}
@@ -177,16 +219,15 @@ const Home = () => {
         </div>
         <div
           style={{
+            ...cardColor,
             height: '300px',
             width: '250px',
-            background: '#04356E',
             borderRadius: '24px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            color: 'white',
             opacity: 0.7,
             zIndex: 1,
             // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
@@ -208,7 +249,7 @@ const Home = () => {
               lineHeight: '28px'
             }}
           >
-            Get notified who owes<br />whom
+            Track balance and payments
           </div>
 
           {/* Arrow */}
@@ -218,16 +259,15 @@ const Home = () => {
         </div>
         <div
           style={{
+            ...cardColor,
             height: '300px',
             width: '250px',
             borderRadius: '24px',
-            background: '#04356E',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            color: 'white',
             opacity: 0.7,
             zIndex: 1,
             // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
@@ -249,7 +289,7 @@ const Home = () => {
               lineHeight: '28px'
             }}
           >
-            Get notified who owes<br />whom
+            Create and manage groups
           </div>
 
           {/* Arrow */}
