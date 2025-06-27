@@ -17,8 +17,8 @@ const Navbar = ({
         <div className='d-flex flex-grow-1 flex-wrap align-items-center' style={{ gap: '0.1rem', fontFamily: 'Poppins, sans-serif', minWidth: 0 }}>
           {/* Logo + Title */}
           <div className="d-flex align-items-center flex-shrink-0 me-4">
-            <a href='/'><img src="Rectangle.png" alt="Logo" width={60} height={60} /></a>
-            <a className="navbar-brand " style={{ ...mystyle, fontSize: '26px' }} href="/">
+            <a href='/'><img src="logo.png" alt="Logo" width={60} height={60} style={{ marginRight: '-15px', marginTop: '12px' }}/></a>
+            <a className="navbar-brand " style={{ ...mystyle, fontSize: '26px',fontWeight: 'bolder' }} href="/">
               Expense Tracker
             </a>
           </div>
@@ -44,21 +44,35 @@ const Navbar = ({
               border: `1px solid ${darkMode ? 'black' : 'white'}`,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: darkMode ? 'flex-end' : 'flex-start',
+              position: 'relative',
               padding: '4px',
-              transition: 'all 0.6s ease-in-out',
+              transition: 'all 0.5s ease',
+            }}
+          ><div
+            style={{
+              width: '18px',
+              height: '18px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: darkMode ? '#021933' : '#A1B5CE', // rose-600 / rose-300
+              top: '4px',
+              left: '4px',
+              transform: darkMode ? 'translateX(24px)' : 'translateX(0)',
+              transition: 'all 0.5s ease', 
             }}
           >
-            {darkMode ? (
-              <FaSun color="#C1C7E3" size={18} />
-            ) : (
-              <FaMoon color="#A1B5CD" size={18} />
-
-            )}
+              {darkMode ? (
+                <FaSun color="#C1C7E3" size={12} />
+              ) : (
+                <FaMoon color="#032248" size={12} />
+              )}
+            </div>
           </div>
 
           {/* Sign In/Sign Up Button */}
-          <button
+          <button 
             className="btn px-4"
             style={{ ...btnborder, ...btnBackground, ...mystyle, fontSize: '14px', fontFamily: 'poppins', borderRadius: '10px' }}
           >

@@ -140,7 +140,7 @@ const Home = () => {
           }}
         />
         <div
-          className="position-absolute w-100 h-100"
+          
           style={{
             top: 0,
             left: 0,
@@ -188,7 +188,7 @@ const Home = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            opacity: 0.7,
+              backgroundColor: 'rgba(4, 53, 110, 0.8)',
             zIndex: 1,
             // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
             boxSizing: 'border-box'
@@ -197,7 +197,7 @@ const Home = () => {
           {/* Icon placeholder */}
           <div style={{ fontSize: '64px' }}>
             {/* Insert your icon here */}
-            <img src="/notification.png" alt="" height={"100"} width={"100"} />
+            <img src="/bell3.png" alt="" height={"100"} width={"100"} style={{opacity: 0.8}} />
           </div>
 
           {/* Text */}
@@ -209,7 +209,7 @@ const Home = () => {
               lineHeight: '28px'
             }}
           >
-            Get notified who owes
+            Get notified who owes whom
           </div>
 
           {/* Arrow */}
@@ -228,16 +228,16 @@ const Home = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            opacity: 0.7,
+            backgroundColor: 'rgba(4, 53, 110, 0.8)',
             zIndex: 1,
-            // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
+            // boxShadow: '0px 10px 30px rgba(4, 53, 110, 0.9)',
             boxSizing: 'border-box'
           }}
         >
           {/* Icon placeholder */}
           <div style={{ fontSize: '64px' }}>
             {/* Insert your icon here */}
-            <img src="/bar-graph.png" alt="" height={"100"} width={"100"} />
+            <img src="/graph.png" alt="" height={"100"} width={"100"} style={{opacity: 0.8}} />
           </div>
 
           {/* Text */}
@@ -268,16 +268,16 @@ const Home = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            opacity: 0.7,
+            backgroundColor: 'rgba(4, 53, 110, 0.8)',
             zIndex: 1,
-            // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
+            // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.9)',
             boxSizing: 'border-box'
           }}
         >
           {/* Icon placeholder */}
           <div style={{ fontSize: '64px' }}>
             {/* Insert your icon here */}
-            <img src="/ancestors.png" alt="" height={"100"} width={"100"} />
+            <img src="/group.png" alt="" height={"100"} width={"100"} style={{opacity: 0.8}} />
           </div>
 
           {/* Text */}
