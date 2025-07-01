@@ -15,7 +15,6 @@ const Home = () => {
     color: active === name ? '#92A7C1' : 'white',
     padding: '8px 16px',
     cursor: 'pointer',
-    color: 'white',
   });
 
   //button text change
@@ -72,7 +71,7 @@ const Home = () => {
     }
   };
 
-  
+
   //Button border
   const [btnborder, setbtnborder] = useState({
     borderWidth: '1px',
@@ -140,7 +139,7 @@ const Home = () => {
           }}
         />
         <div
-          
+          className="position-absolute w-100 h-100"
           style={{
             top: 0,
             left: 0,
@@ -188,7 +187,7 @@ const Home = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-              backgroundColor: 'rgba(4, 53, 110, 0.8)',
+            opacity: 0.7,
             zIndex: 1,
             // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
             boxSizing: 'border-box'
@@ -197,7 +196,7 @@ const Home = () => {
           {/* Icon placeholder */}
           <div style={{ fontSize: '64px' }}>
             {/* Insert your icon here */}
-            <img src="/bell3.png" alt="" height={"100"} width={"100"} style={{opacity: 0.8}} />
+            <img src="/bell3.png" alt="" height={"100"} width={"100"} />
           </div>
 
           {/* Text */}
@@ -209,7 +208,7 @@ const Home = () => {
               lineHeight: '28px'
             }}
           >
-            Get notified who owes whom
+            Get notified who owes
           </div>
 
           {/* Arrow */}
@@ -228,16 +227,16 @@ const Home = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            backgroundColor: 'rgba(4, 53, 110, 0.8)',
+            opacity: 0.7,
             zIndex: 1,
-            // boxShadow: '0px 10px 30px rgba(4, 53, 110, 0.9)',
+            // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
             boxSizing: 'border-box'
           }}
         >
           {/* Icon placeholder */}
           <div style={{ fontSize: '64px' }}>
             {/* Insert your icon here */}
-            <img src="/graph.png" alt="" height={"100"} width={"100"} style={{opacity: 0.8}} />
+            <img src="/graph.png" alt="" height={"100"} width={"100"} />
           </div>
 
           {/* Text */}
@@ -268,16 +267,55 @@ const Home = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '40px 24px',
-            backgroundColor: 'rgba(4, 53, 110, 0.8)',
+            opacity: 0.7,
             zIndex: 1,
-            // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.9)',
+            // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
+            boxSizing: 'border-box'
+          }}
+        >
+          <div style={{ fontSize: '64px' }}>
+            {/* Insert your icon here */}
+            <img src="/graph.png" alt="" height={"100"} width={"100"} />
+          </div>
+
+          {/* Text */}
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: '20px',
+              fontWeight: '500',
+              lineHeight: '28px'
+            }}
+          >
+            Track balance and payments
+          </div>
+
+          {/* Arrow */}
+          <div style={{ fontSize: '28px', marginLeft: '150px' }}>
+            <img src="right-chevron.png" alt="" height={50} width={50} />
+          </div>
+        </div>
+        <div
+          style={{
+            ...cardColor,
+            height: '300px',
+            width: '250px',
+            borderRadius: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '40px 24px',
+            opacity: 0.7,
+            zIndex: 1,
+            // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
             boxSizing: 'border-box'
           }}
         >
           {/* Icon placeholder */}
           <div style={{ fontSize: '64px' }}>
             {/* Insert your icon here */}
-            <img src="/group.png" alt="" height={"100"} width={"100"} style={{opacity: 0.8}} />
+            <img src="/group.png" alt="" height={"100"} width={"100"} />
           </div>
 
           {/* Text */}
