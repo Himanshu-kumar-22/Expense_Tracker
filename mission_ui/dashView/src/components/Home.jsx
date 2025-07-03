@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar.jsx';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -163,12 +164,12 @@ const Home = () => {
             <p className="lead" style={{ ...mystyle, fontFamily: 'Poppins, sans-serif' }}>
               Track shared expenses with roommates, friends, and travel groups effortlessly.
             </p>
-            <button
+            <Link to="/signup"> <button
               className="btn rounded-pill mt-4 px-4 py-2"
               style={{ ...btnborder, ...btnBackground, ...mystyle, fontFamily: 'Poppins, sans-serif' }}
             >
               Ready to split smarter?
-            </button>
+            </button></Link>
           </span>
         </div>
 
