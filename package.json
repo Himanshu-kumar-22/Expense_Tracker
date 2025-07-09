@@ -4,7 +4,9 @@
   "description": "Expense Management System",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,17 @@
   "bugs": {
     "url": "https://github.com/Himanshu-kumar-22/TopSecret/issues"
   },
-  "homepage": "https://github.com/Himanshu-kumar-22/TopSecret#readme"
+  "homepage": "https://github.com/Himanshu-kumar-22/TopSecret#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.6.3",
+    "react-toastify": "^11.0.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "vite": "^5.0.0"
+  }
 }
