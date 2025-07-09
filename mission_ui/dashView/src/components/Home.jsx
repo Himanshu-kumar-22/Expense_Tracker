@@ -147,8 +147,6 @@ const Home = () => {
             zIndex: -1,
           }}
         />
-        {/* Hero Section*/}
-        {/* Hero Section */}
         <div
           className="text-center mt-3 d-flex justify-content-center"
           style={{
@@ -176,7 +174,17 @@ const Home = () => {
       </div>
 
       {/* cards */}
-      <div className="d-flex align-items-center flex-wrap justify-content-center" style={{ height: '300px', zIndex: 1, gap: '10rem', marginTop: '-200px', rowGap: '2rem' }}>
+      <div className="d-flex align-items-center flex-wrap justify-content-center"
+        style={{
+          marginTop: '-200px', // Half of card height
+          left: 0,
+          width: '100%',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '3.5rem',
+          zIndex: 2
+        }}>
         <div
           style={{
             ...cardColor,
