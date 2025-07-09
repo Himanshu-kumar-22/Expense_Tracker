@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     mobile: '',
@@ -35,13 +35,13 @@ const SignIn = () => {
       });
 
       const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.error || "Sign in failed");
-      } else {
-        alert("Signed in successfully!");;
-        navigate("/dashboard");
-      }
+      alert(data.message);
+      // if (!response.ok) {
+      //   alert(data.error || "Sign in failed");
+      // } else {
+      //   alert("Signed in successfully!");;
+      //   navigate("/dashboard");
+      // }
     } catch (err) {
       console.error("Error:", err);
       alert("Server error. Please try again later.");
@@ -121,10 +121,11 @@ const SignIn = () => {
               </div>
 
               {/* Submit */}
-              <button type="submit" className="btn btn-info text-white w-100 rounded-pill mt-3 " 
-              style={{background:"#043978",
-                border:"3.18 px"
-              }}>
+              <button type="submit" className="btn btn-info text-white w-100 rounded-pill mt-3 "
+                style={{
+                  background: "#043978",
+                  border: "3.18 px"
+                }}>
                 Sign In
               </button>
 

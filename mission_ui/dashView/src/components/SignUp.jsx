@@ -321,13 +321,12 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/signin', formData);
-      alert("Account created successfully!");
+      const response = await axios.post('http://localhost:5000/api/users/signup', formData);
+      alert(response.data.message);
       navigate("/signin");
-      setErrors({});
     } catch (err) {
       console.error(err);
-      alert("Signup failed");
+      alert(err.message);
     }
   };
 
@@ -345,9 +344,9 @@ const Signup = () => {
       />
 
       {/* Main Content */}
-      <div className="w-100 px-4" style={{ maxWidth: '1300px', zIndex: 1 ,rowGap:'1px' }}>
+      <div className="w-100 px-4" style={{ maxWidth: '1300px', zIndex: 1, rowGap: '1px' }}>
         <div className="d-flex flex-wrap justify-content-between align-items-start"
-          >
+        >
 
           {/* Left - Form Section */}
           <div className="text-white col-lg-7 mb-5 mb-lg-5"

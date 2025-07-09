@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Navbar from "./Navbar.jsx"
+import LandingLayout from './LandingLayout.jsx';
+
+
 
 const Feature = () => {
+  const [active, setActive] = useState('Features');
+
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-100">
-      <h1 className="text-3xl font-bold text-white-800" style = {{color: 'whitesmoke'}} >Feature Page Reached ✅</h1>
-    </div>
+    <LandingLayout active={active} setActive={setActive}>
+      {() => (
+        <>
+          <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+            <h1 className="text-xl font-bold text-white-800" style={{ color: 'whitesmoke' }} >🚧 Men at Work 👷‍♂️ </h1>
+          </div>
+        </>
+      )}
+    </LandingLayout>
   );
 };
 

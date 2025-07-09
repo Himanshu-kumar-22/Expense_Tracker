@@ -12,16 +12,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 const App = () => {
   return (
 
-    
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/feature" element={<Feature />} />
-        <Route path="/contact" element={<Contact />} />
 
-      </Routes>
-    
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/feature" element={<Feature />} />
+      <Route path="/contact" element={<Contact />} />
+
+    </Routes>
+
 
   )
 }
