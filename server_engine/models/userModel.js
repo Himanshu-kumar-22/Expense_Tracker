@@ -7,25 +7,15 @@ const createUser = async (fullName, email, mobile, password) => {
     )
 };
 
-const verifyUser = async (mobile, password) => {
+const verifyUser = async (mobile) => {
     try {
         const result = await pool.query(
             'select * from users where phone = $1', [mobile]
         )
 
-        if (result.rows.length === 0) {
-            return { success: false, message: "Hmm, we couldn't find your account. Want to sign up?" }
-        }
-
         const user = result.rows[0];
 
-        if (user.password === password) {
-            return { success: true, message: `Welcome back, ${user.name}!` }
-        }
-        else {
-            return { success: false, message: 'Invalid Phone number or Password' }
-        }
-
+        return user;
     }
     catch (e) {
         console.log("Error during signin: ", e);
