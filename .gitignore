@@ -1,0 +1,6 @@
+# node_modules/
+# server_engine/node_modules/
+# mission_ui/dashView/node_modules/
+
+# or
+**/node_modules/

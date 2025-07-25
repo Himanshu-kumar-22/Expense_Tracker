@@ -26,9 +26,9 @@ const Navbar = ({
 
           {/* Nav Links */}
           <div className="d-flex align-items-center flex-wrap" style={{ gap: '2rem', fontSize: '16px', whiteSpace: 'nowrap' }}>
-            <a className="nav-link text-white" style={underlining('Home')} onClick={() => setActive('Home')} href="/">Home</a>
-            <Link to = "/feature" style={{ textDecoration: 'none' }}><div className="nav-link text-white" style={underlining('Features')} onClick={() => setActive('Features')} href="#">Features</div></Link>
-            <Link to = "/contact" style={{ textDecoration: 'none' }}><div className="nav-link text-white" style={underlining('Contact')} onClick={() => setActive('Contact')} href="#">Contact</div></Link>
+            <a className="nav-link text-white" style={{ ...underlining('Home') }} onClick={() => setActive('Home')} href="/">Home</a>
+            <Link to="/feature" style={{ textDecoration: 'none' }}><div className="nav-link text-white" style={underlining('Features')} onClick={() => setActive('Features')}>Features</div></Link>
+            <Link to="/contact" style={{ textDecoration: 'none' }}><div className="nav-link text-white" style={underlining('Contact')} onClick={() => setActive('Contact')}>Contact</div></Link>
           </div>
         </div>
 
@@ -76,9 +76,9 @@ const Navbar = ({
           <Link to="/signup">
             <button
               className="btn px-4"
-              style={{ ...btnborder, ...btnBackground, ...mystyle, fontSize: '14px', fontFamily: 'poppins', borderRadius: '10px' }}
+              style={{ ...btnborder, ...btnBackground, ...mystyle, fontSize: '14px', fontFamily: 'Poppins', borderRadius: '17px' }}
             >
-              Sign in/Sign up
+              Sign Up/In
             </button>
           </Link>
         </div>
