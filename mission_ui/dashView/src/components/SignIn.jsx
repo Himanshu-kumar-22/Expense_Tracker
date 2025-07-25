@@ -41,6 +41,7 @@ const SignIn = () => {
 
       if (response.status === 200) {
         toast.success(data.message);
+        
       } else if (response.status === 400 || response.status === 401) {
         toast.error(data.message);
       } else if (response.status === 404) {
@@ -113,7 +114,7 @@ const SignIn = () => {
                 <div className="mb-3 text-start">
                   <div className="d-flex justify-content-between">
                     <label className="form-label">Password</label>
-                    <span className="text-info" style={{ cursor: "pointer", fontSize: "14px" }}>Forgot Password?</span>
+                    <Link to="/dashboard"><span className="text-info" style={{ cursor: "pointer", fontSize: "14px" }}>Forgot Password?</span></Link>
                   </div>
                   <div className="input-group">
                     <input

@@ -1,0 +1,79 @@
+
+.text-secondary:hover {
+  color: white;
+}
+.bell-hover:hover {
+  color: white !important;
+}
+.small-padding {
+  padding: 0.0625rem; /* 1px */
+}
+/* === profile drawer === */
+.profile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 300px;                 /* adjust width here */
+  backdrop-filter: blur(2px);   /* optional glassy overlay */
+  transform: translateX(100%);  /* hidden off–screen */
+  transition: transform 0.3s ease;
+  z-index: 1050;                /* above everything */
+}
+.profile-drawer.open {
+  transform: translateX(0);     /* slide in */
+}
+.drawer-content {
+  background:#021b38;
+  color:#fff;
+  
+  height:100%;
+  padding:1.5rem;
+  border-left:1px solid #1152A2;
+  overflow:auto;
+}
+/* Sidebar starts hidden off the left edge */
+.sidebar-slide {
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+
+.sidebar-slide.show {
+  transform: translateX(0);
+}
+
+.slide-down {
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.4s ease-out;
+}
+
+.slide-down.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
