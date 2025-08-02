@@ -11,6 +11,9 @@ import { HiOutlineUserGroup, HiUserGroup } from 'react-icons/hi2';
 import { FaQuestionCircle, FaRegQuestionCircle } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import Customcalendar from './Customcalendar';
+import AddFriendPopup from "./AddFriendPopup";
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -26,6 +29,7 @@ const Dashboard = () => {
     const [fadeIn, setFadeIn] = useState(false);
     const bellRef = useRef(null);
     const [bellPosition, setBellPosition] = useState({ top: 0, left: 0 });
+    const [showAddFriend, setShowAddFriend] = useState(false);
 
     useEffect(() => {
         if (notificationOpen && bellRef.current) {
@@ -34,7 +38,7 @@ const Dashboard = () => {
         }
     }, [notificationOpen]);
 
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {
@@ -68,8 +72,9 @@ const Dashboard = () => {
 
 
                             </div>
+                            {/*show freinds or group*/}
 
-                            <div style={{ width: "100%", cursor: "pointer", color: (activeIcon === "group" || hoveredIcon === "group") ? "#ffffff" : "#ffffffff" }}
+                            {/* <div style={{ width: "100%", cursor: "pointer", color: (activeIcon === "group" || hoveredIcon === "group") ? "#ffffff" : "#ffffffff" }}
                                 onClick={() => setActiveIcon("group")}
                                 onMouseEnter={() => setHoveredIcon("group")}
                                 onMouseLeave={() => setHoveredIcon(null)}>
@@ -80,8 +85,30 @@ const Dashboard = () => {
                                 )}
 
 
+                            </div> */}
+
+                            <div
+                                style={{
+                                    width: "100%",
+                                    cursor: "pointer",
+                                    color: activeIcon === "group" || hoveredIcon === "group" ? "#ffffff" : "#ffffffff",
+                                }}
+                                onClick={() => {
+                                    setActiveIcon("group");
+                                    navigate("/friends"); // route path
+                                }}
+                                onMouseEnter={() => setHoveredIcon("group")}
+                                onMouseLeave={() => setHoveredIcon(null)}
+                            >
+                                {activeIcon === "group" || hoveredIcon === "group" ? (
+                                    <HiUserGroup size={30} />
+                                ) : (
+                                    <HiOutlineUserGroup size={30} />
+                                )}
                             </div>
-                            <div className="d-flex justify-content-center align-items-center" style={{ width: "100%", cursor: "pointer", color: (activeIcon === "friend" || hoveredIcon === "friend") ? "#ffffff" : "#ffffffff" }}
+
+
+                            {/* <div className="d-flex justify-content-center align-items-center" style={{ width: "100%", cursor: "pointer", color: (activeIcon === "friend" || hoveredIcon === "friend") ? "#ffffff" : "#ffffffff" }}
                                 onClick={() => setActiveIcon("friend")}
                                 onMouseEnter={() => setHoveredIcon("friend")}
                                 onMouseLeave={() => setHoveredIcon(null)}>
@@ -98,7 +125,46 @@ const Dashboard = () => {
                                 />
 
 
+                            </div> */}
+                            <div>
+                                {/* Add Friend Button */}
+                                <div
+                                    className="d-flex justify-content-center align-items-center"
+                                    style={{
+                                        width: "100%",
+                                        cursor: "pointer",
+                                        color:
+                                            activeIcon === "friend" || hoveredIcon === "friend"
+                                                ? "#ffffff"
+                                                : "#ffffffff",
+                                    }}
+                                    onClick={() => {
+                                        setActiveIcon("friend");
+                                        setShowAddFriend(true); // open the popup
+                                    }}
+                                    onMouseEnter={() => setHoveredIcon("friend")}
+                                    onMouseLeave={() => setHoveredIcon(null)}
+                                >
+                                    <img
+                                        src={
+                                            activeIcon === "friend" || hoveredIcon === "friend"
+                                                ? "/friendfill.png"
+                                                : "/friendoutline.png"
+                                        }
+                                        alt="Add Friend"
+                                        width={25}
+                                        height={25}
+                                        style={{ objectFit: "contain" }}
+                                    />
+                                </div>
+
+                                {/* Popup Component */}
+                                {showAddFriend && (
+                                    <AddFriendPopup onClose={() => setShowAddFriend(false)} />
+                                )}
                             </div>
+
+
                             <div style={{ width: "100%", cursor: "pointer", color: (activeIcon === "faq" || hoveredIcon === "faq") ? "#ffffff" : "#ffffffff" }}
                                 onClick={() => setActiveIcon("faq")}
                                 onMouseEnter={() => setHoveredIcon("faq")}
@@ -153,16 +219,16 @@ const Dashboard = () => {
                     </div>
 
                     {/* CALENDAR & CHARTS */}
-                    <div className={`rounded-4 main-content fade-in-section ${fadeIn ? 'show' : ''}`} style={{ height: "85vh", backgroundColor: 'rgba(0, 1, 3, 0.4)', border: "1px solid #1152A2" }}>
+                    {/* <div className={`rounded-4 fade-in-section ${fadeIn ? 'show' : ''}`} style={{ height: "85vh", backgroundColor: 'rgba(0, 1, 3, 0.4)', border: "1px solid #1152A2", zIndex:"-1" }}>
                         <div><Customcalendar /></div>
                         <div>Charts</div>
-                    </div>
+                    </div> */}
 
 
                 </div>
 
 
-                 {/* Notification drawer */}
+                {/* Notification drawer */}
                 {notificationOpen && (
                     <div
                         className="notification-drawer"
@@ -171,7 +237,7 @@ const Dashboard = () => {
                             top: `${bellPosition.top}px`,
                             left: `${bellPosition.left}px`,
                             width: '15vw',
-                            height:'50vh',
+                            height: '50vh',
                             backgroundColor: '#021b38',
                             color: 'white',
                             border: '1px solid #1152A2',
@@ -229,7 +295,7 @@ const Dashboard = () => {
 
                     </div>
                 </div>
-                
+
             </div>
 
 
