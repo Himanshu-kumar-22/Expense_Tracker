@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -65,16 +65,6 @@ const SignIn = () => {
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme="colored"
-      />
       <div
         className="container-fluid min-vh-100 d-flex align-items-center justify-content-center position-relative"
         style={{ background: 'linear-gradient(to bottom, #010C19 0%, #053D7F 100%)' }}
@@ -91,7 +81,7 @@ const SignIn = () => {
           <div className="text-white text-center">
             <h1 style={{ fontFamily: "Bebas Neue", fontSize: "64px" }}>SIGN IN</h1>
             <p style={{ fontFamily: "Poppins", fontSize: "18px" }}>
-              Don’t have an account? <Link to="/signup" className="text-info fw-semibold">Sign up</Link>
+              Don’t have an account? <Link to="/signup" className="text-info fw-semibold" style={{textDecoration:"none"}}>Sign up</Link>
             </p>
 
             <div className="p-4 rounded-4 border border-info mt-4" style={{ backgroundColor: 'rgba(1, 8, 37, 0.4)' }}>
@@ -114,7 +104,7 @@ const SignIn = () => {
                 <div className="mb-3 text-start">
                   <div className="d-flex justify-content-between">
                     <label className="form-label">Password</label>
-                    <Link to="/dashboard"><span className="text-info" style={{ cursor: "pointer", fontSize: "14px" }}>Forgot Password?</span></Link>
+                    <Link to="/dashboard" className="text-info" style={{ fontSize: "14px" , textDecoration:"none", cursor: "pointer"}}>Forgot Password?</Link>
                   </div>
                   <div className="input-group">
                     <input
@@ -131,7 +121,7 @@ const SignIn = () => {
                         backgroundColor: "white",
                         border: "1px solid #ced4da",
                         borderLeft: "none",
-                        borderRadius: "0 0.375rem 0.375rem 0", // right corners only
+                        borderRadius: "0 0.375rem 0.375rem 0",
                         padding: "0 12px",
                         color: "#010D1B",
                         boxShadow: "none"
