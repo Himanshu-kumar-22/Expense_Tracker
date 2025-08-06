@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import Navbar from "./Navbar.jsx"
+import { motion } from "motion/react";
 import LandingLayout from './LandingLayout.jsx';
 
 const Contact = () => {
@@ -17,17 +18,37 @@ const Contact = () => {
             <div className="row w-100 px-4" style={{ maxWidth: '1300px' }}>
               {/* Left Section - Contact Form */}
               <div className="col-md-7" style={mystyle}>
-                <h1
+                <motion.h1
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    type: 'spring',
+                    duration: 1
+                  }}
                   className="mb-3"
                   style={{ fontSize: '64px', fontFamily: 'Bebas Neue' }}
                 >
                   CONTACT US
-                </h1>
-                <p className="mb-4 fs-5" style={{ fontFamily: 'poppins' }}>
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    type: 'spring',
+                    duration: 1,
+                  }}
+                  className="mb-4 fs-5" style={{ fontFamily: 'poppins' }}>
                   Contact us anytime for product-related questions.
-                </p>
+                </motion.p>
 
-                <form>
+                <motion.form
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    type: 'spring',
+                    duration: 1
+                  }}
+                >
                   <div className="mb-4">
                     <label className="form-label">Name</label>
                     <input
@@ -62,18 +83,26 @@ const Contact = () => {
                     ></textarea>
                   </div>
 
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
                     type="submit"
                     className="btn rounded-pill px-4 py-2"
                     style={{ ...btnborder, ...mystyle }}
                   >
                     Send Message
-                  </button>
-                </form>
+                  </motion.button>
+                </motion.form>
               </div>
 
               {/* Right Section - Info */}
-              <div className="col-md-5 mt-5 mt-md-0 d-flex flex-column justify-content-center gap-4" style={mystyle}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.7 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+
+                  duration: 0.5
+                }}
+                className="col-md-5 mt-5 mt-md-0 d-flex flex-column justify-content-center gap-4" style={mystyle}>
                 <div className="d-flex align-items-center gap-3">
                   <FaPhoneAlt className="fs-10" />
                   <span className="fs-5">1800-562-456</span>
@@ -87,12 +116,13 @@ const Contact = () => {
                 <p className="fs-5">
                   Call us for urgent matters.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </>
-      )}
-    </LandingLayout>
+      )
+      }
+    </LandingLayout >
   );
 };
 
