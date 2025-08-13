@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from "motion/react";
 
 
 const SignIn = () => {
@@ -41,7 +42,7 @@ const SignIn = () => {
 
       if (response.status === 200) {
         toast.success(data.message);
-        
+
       } else if (response.status === 400 || response.status === 401) {
         toast.error(data.message);
       } else if (response.status === 404) {
@@ -79,12 +80,34 @@ const SignIn = () => {
 
         <div className="w-100 px-3" style={{ maxWidth: '500px', zIndex: 1 }}>
           <div className="text-white text-center">
-            <h1 style={{ fontFamily: "Bebas Neue", fontSize: "64px" }}>SIGN IN</h1>
-            <p style={{ fontFamily: "Poppins", fontSize: "18px" }}>
-              Don’t have an account? <Link to="/signup" className="text-info fw-semibold" style={{textDecoration:"none"}}>Sign up</Link>
-            </p>
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                duration: 1
+              }}
+              style={{ fontFamily: "Bebas Neue", fontSize: "64px" }}>SIGN IN</motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                duration: 1
+              }}
+              style={{ fontFamily: "Poppins", fontSize: "18px" }}>
+              Don’t have an account? <Link to="/signup" className="text-info fw-semibold" style={{ textDecoration: "none" }}>Sign up</Link>
+            </motion.p>
 
-            <div className="p-4 rounded-4 border border-info mt-4" style={{ backgroundColor: 'rgba(1, 8, 37, 0.4)' }}>
+            <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                delay: 0.3,
+                duration: 1
+              }}
+            className="p-4 rounded-4 border border-info mt-4" style={{ backgroundColor: 'rgba(1, 8, 37, 0.4)' }}>
               <form onSubmit={handleSubmit}>
 
                 {/* Mobile Field */}
@@ -104,7 +127,7 @@ const SignIn = () => {
                 <div className="mb-3 text-start">
                   <div className="d-flex justify-content-between">
                     <label className="form-label">Password</label>
-                    <Link to="/dashboard" className="text-info" style={{ fontSize: "14px" , textDecoration:"none", cursor: "pointer"}}>Forgot Password?</Link>
+                    <Link to="/dashboard" className="text-info" style={{ fontSize: "14px", textDecoration: "none", cursor: "pointer" }}>Forgot Password?</Link>
                   </div>
                   <div className="input-group">
                     <input
@@ -136,16 +159,18 @@ const SignIn = () => {
                 </div>
 
                 {/* Submit */}
-                <button type="submit" className="btn btn-info text-white w-100 rounded-pill mt-3 "
+                <motion.button
+                whileTap={{ scale: 0.9 }}
+                 type="submit" className="btn btn-info text-white w-100 rounded-pill mt-3 "
                   style={{
                     background: "#043978",
                     border: "3.18 px"
                   }}>
                   Sign In
-                </button>
+                </motion.button>
 
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

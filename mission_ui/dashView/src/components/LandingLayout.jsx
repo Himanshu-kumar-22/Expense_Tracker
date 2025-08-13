@@ -81,6 +81,7 @@ const LandingLayout = ({ children, active, setActive }) => {
                 underlining={underlining}
                 active={active}
                 setActive={setActive}
+                cardColor={cardColor}
             />
             {children({ cardColor, btnBackground, btnborder, mystyle })}
         </>

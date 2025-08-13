@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  cursor: none;
+}
+.slide {
+  display: inline-block;
+  flex-direction: column;
+  transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+}
+
+@keyframes wordSlider {
+  0% {
+    transform: translateY(0.5%);
+  }
+  12.5% {
+    transform: translateY(-12.5%);
+  }
+  25% {
+    transform: translateY(-25%);
+  }
+  37.5% {
+    transform: translateY(-37.5%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  62.5% {
+    transform: translateY(-62.5%);
+  }
+  75% {
+    transform: translateY(-75%);
+  }
+  87.5% {
+    transform: translateY(-87.5%);
+  }
+}
+
 .text-secondary:hover {
   color: white;
 }
@@ -79,3 +121,30 @@
     transform: translateY(0);
   }
 } 
+.custom-flex-layout {
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 1280px) {
+  .custom-flex-layout {
+    flex-direction: row;
+  }
+}
+.custom-hide-on-md {
+  display: flex;
+}
+
+@media (min-width: 854px) {
+  .custom-hide-on-md {
+    display: none;
+  }
+}
+.show-on-lg-up {
+  display: none;
+}
+
+@media (min-width: 854px) {
+  .show-on-lg-up {
+    display: flex;
+  }
+}
