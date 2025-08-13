@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from "motion/react";
+
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -80,7 +82,13 @@ const Signup = () => {
       className="container-fluid min-vh-100 d-flex align-items-center justify-content-center position-relative"
       style={{ background: 'linear-gradient(to bottom, #010C19 0%, #053D7F 100%)' }}
     >
-      <img
+      <motion.img
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 0.2, scale: 1 }}
+        transition={{
+          duration: 0.7
+        }}
+
         src="/logo.png"
         alt="bg logo"
         className="position-absolute top-0"
@@ -96,17 +104,39 @@ const Signup = () => {
 
       <div className="w-100 px-4" style={{ maxWidth: '1300px', zIndex: 1 }}>
         <div className="d-flex flex-wrap justify-content-between align-items-start">
-          
+
           {/* Left Form Section */}
           <div className="text-white col-lg-7 mb-5">
-            <h1 style={{ fontFamily: "Bebas Neue", fontSize: "64px" }}>SIGN UP</h1>
-            <p style={{ fontFamily: "Poppins", fontSize: "20px" }}>
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                duration: 1
+              }}
+              style={{ fontFamily: "Bebas Neue", fontSize: "64px" }}>SIGN UP</motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                duration: 1
+              }}
+              style={{ fontFamily: "Poppins", fontSize: "20px" }}>
               Already have an account? <Link to="/signin" className='text-info' style={{ fontWeight: 'bold', textDecoration: 'none' }}>Sign in</Link>
-            </p>
+            </motion.p>
 
-            <div className="p-4 rounded-4 border border-info" style={{ backgroundColor: 'rgba(1, 8, 37, 0.4)' }}>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                type: 'spring',
+
+                duration: 1
+              }}
+              className="p-4 rounded-4 border border-info" style={{ backgroundColor: 'rgba(1, 8, 37, 0.4)' }}>
               <form style={{ fontFamily: "Poppins" }} onSubmit={handleSubmit}>
-                
+
                 <div className="d-flex gap-3">
                   <div className="flex-grow-1">
                     <label className="form-label fs-5">First Name</label>
@@ -218,19 +248,28 @@ const Signup = () => {
                   {errors.confirmPassword && <small className="text-danger">{errors.confirmPassword}</small>}
                 </div>
 
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
                   type="submit"
                   className="btn btn-info text-white mt-4 px-4 rounded-pill fs-5"
                   style={{ border: '2px solid #92A7C1', backgroundColor: "#043978" }}
                 >
                   Create Account
-                </button>
+                </motion.button>
               </form>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Illustration */}
-          <div className="col-lg-4 text-white">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              type: 'spring',
+
+              duration: 1
+            }}
+            className="col-lg-4 text-white">
             <div style={{ fontFamily: 'Poppins', paddingTop: '133px', maxWidth: '35vw' }}>
               <img src="/signup.png" alt="illustration" style={{ borderRadius: "10px", width: '100%', marginBottom: '15px' }} />
               <h2 style={{ fontFamily: "Bebas Neue", fontSize: '40px', marginBottom: '10px' }}>Manage Your Money Smarter</h2>
@@ -241,7 +280,7 @@ const Signup = () => {
                 <li>✔ Timely reminders for bills</li>
               </ul>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

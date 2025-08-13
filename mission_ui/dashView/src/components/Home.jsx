@@ -1,10 +1,136 @@
-import React, { useState } from 'react';
-import Navbar from './Navbar.jsx';
+import React, { useState, useEffect } from 'react';
 import LandingLayout from './LandingLayout.jsx';
 import { Link } from 'react-router-dom';
-
+import Spline from '@splinetool/react-spline';
+import { motion } from "motion/react";
 const Home = () => {
   const [active, setActive] = useState('Home');
+  const words = [
+    { text: 'Seamless' },
+    { text: 'Smarter' },
+    { text: 'Organized' },
+    { text: 'Transparent' }
+  ]
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % words.length);
+    }, 2000); // 2 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+  const FEATURE_CARDS = [
+    {
+      id: 1,
+      icon: "/bell3.png",
+      title: "Get notified who owes",
+      alt: "Notification bell icon"
+    },
+    {
+      id: 2,
+      icon: "/graph.png",
+      title: "Track balance and payments",
+      alt: "Graph icon"
+    },
+    {
+      id: 3,
+      icon: "/calculator.png", // Changed from duplicate graph.png
+      title: "Split expenses easily",
+      alt: "Calculator icon"
+    },
+    {
+      id: 4,
+      icon: "/group.png",
+      title: "Create and manage groups",
+      alt: "Group icon"
+    },
+    {
+      id: 5,
+      icon: "/group.png",
+      title: "Create and manage groups",
+      alt: "Group icon"
+    }
+  ];
+
+  const FeatureCard = ({ icon, title, alt, cardColor }) => (
+    <div
+      style={{
+        ...cardColor,
+        height: '300px',
+        width: '250px',
+        borderRadius: '24px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '40px 24px',
+        opacity: 0.7,
+        zIndex: 1,
+        boxSizing: 'border-box',
+        transition: 'all 0.3s ease',
+        cursor: 'pointer'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.opacity = '1';
+        e.currentTarget.style.transform = 'translateY(-5px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.opacity = '0.7';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      {/* Icon */}
+      <div style={{ fontSize: '20px' }}>
+        <img
+          src={icon}
+          alt={alt}
+          height="100"
+          width="100"
+          style={{ objectFit: 'contain' }}
+        />
+      </div>
+
+      {/* Text */}
+      <div
+        style={{
+          textAlign: 'center',
+          fontSize: '20px',
+          fontWeight: '500',
+          lineHeight: '28px',
+          color: 'inherit'
+        }}
+      >
+        {title}
+      </div>
+
+      {/* Arrow */}
+      <Link to='/feature' style={{ textDecoration: 'none' }}>
+        <div
+          style={{
+            fontSize: '28px',
+            marginLeft: '150px',
+            transition: 'transform 0.3s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateX(5px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateX(0)';
+          }}
+        >
+          <img
+            src="right-chevron.png"
+            alt="Arrow right"
+            height={50}
+            width={50}
+            style={{ objectFit: 'contain' }}
+          />
+        </div>
+      </Link>
+    </div>
+  );
+
 
   return (
 
@@ -13,240 +139,80 @@ const Home = () => {
         <>
 
           {/* Hero Section */}
-          < div className="position-relative text-white d-flex justify-content-center overflow-hidden" style={{ minHeight: '100vh', paddingTop: '4rem' }}>
-            <img
-              src="/bkgGif.gif"
-              alt="Background"
-              className="position-absolute"
-              style={{
-                top: '-10%',
-                left: 0,
-                zIndex: -1,
-                objectFit: 'cover',
-                width: '100%',
-                height: '97.5%',
-                opacity: 0.2
-              }}
-            />
-            <div
-              className="position-absolute w-100 h-100"
-              style={{
-                top: 0,
-                left: 0,
-                zIndex: -1,
-              }}
-            />
-            <div
-              className="text-center mt-3 d-flex justify-content-center"
-              style={{
-                maxWidth: '600px',
-                height: '100vh',
-                zIndex: 2,
-              }}
-            >
-              <span style={{ display: 'block', width: '100%' }}>
-                <h1 className="display-2 mb-3" style={{ ...mystyle, fontFamily: 'Bebas Neue, sans-serif' }}>
-                  MAKING SHARED <br /> EXPENSES EFFORTLESS
-                </h1>
-                <p className="lead" style={{ ...mystyle, fontFamily: 'Poppins, sans-serif' }}>
-                  Track shared expenses with roommates, friends, and travel groups effortlessly.
-                </p>
-                <Link to="/signup"> <button
-                  className="btn rounded-pill mt-4 px-4 py-2"
-                  style={{ ...btnborder, ...btnBackground, ...mystyle, fontFamily: 'Poppins, sans-serif' }}
-                >
-                  Ready to split smarter?
-                </button></Link>
-              </span>
-            </div>
+          <div className="relative h-[75vh] text-white flex custom-flex-layout justify-between items-center overflow-hidden " style={{ paddingTop: '4rem' }}>
+            <div className="w-1/2 px-5 items-center justify-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 80 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
 
+                  stiffness: 40,
+                  damping: 25,
+                  delay: 0.3,
+                  duration: 0.7
+                }}
+                className="display-2 mb-3" style={{ ...mystyle, fontFamily: 'Bebas Neue, sans-serif' }}>
+                MAKING SHARED <br /> EXPENSES EFFORTLESS</motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 80 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+
+                  stiffness: 40,
+                  damping: 25,
+                  delay: 0.5,
+                  duration: 0.9
+                }}
+                className="lead" style={{ ...mystyle, fontFamily: 'Poppins, sans-serif' }}>
+                Track shared expenses with roommates, friends, and travel groups effortlessly.
+              </motion.p>
+              <Link to="/signup"> <motion.button
+               initial={{ opacity: 0, y: 80 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+
+                  stiffness: 40,
+                  damping: 25,
+                  delay: 0.7,
+                  duration: 1
+                }}
+
+                whileTap={{ scale: 0.9 }}
+                className="btn rounded-pill my-4 px-4 py-2 "
+                style={{ ...btnborder, ...btnBackground, ...mystyle, fontFamily: 'Poppins, sans-serif' }}
+              >
+                Ready to split smarter?
+              </motion.button></Link>
+            </div>
+            <div className="w-1/2 flex items-center justify-center">
+              <Spline className="absolute  " style={{}} scene="https://prod.spline.design/OTQHL6h2i5jg-uA5/scene.splinecode" />
+
+            </div>
           </div>
 
           {/* cards */}
-          <div className="d-flex align-items-center flex-wrap justify-content-center"
+          <div className="d-flex align-items-center flex-wrap px-5 "
             style={{
-              marginTop: '-200px', // Half of card height
+              marginTop: '', // Half of card height
               left: 0,
               width: '100%',
               display: 'flex',
               flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '3.5rem',
+
+              gap: '2.5rem',
               zIndex: 2
             }}>
+            {FEATURE_CARDS.map((card) => (
+              <FeatureCard
+                key={card.id}
+                icon={card.icon}
+                title={card.title}
+                alt={card.alt}
+                cardColor={cardColor}
+              />
+            ))}
 
-            {/*First card*/}
-            <div
-              style={{
-                ...cardColor,
-                height: '300px',
-                width: '250px',
-                borderRadius: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '40px 24px',
-                opacity: 0.7,
-                zIndex: 1,
-                boxSizing: 'border-box'
-              }}
-            >
-              {/* Icon placeholder */}
-              <div style={{ fontSize: '64px' }}>
-                <img src="/bell3.png" alt="" height={"100"} width={"100"} />
-              </div>
 
-              {/* Text */}
-              <div
-                style={{
-                  textAlign: 'center',
-                  fontSize: '20px',
-                  fontWeight: '500',
-                  lineHeight: '28px'
-                }}
-              >
-                Get notified who owes
-              </div>
-
-              {/* Arrow */}
-              <Link to='/feature' style={{ textDecoration: 'none' }}>
-                <div style={{ fontSize: '28px', marginLeft: '150px' }}>
-                  <img src="right-chevron.png" alt="" height={50} width={50} />
-                </div>
-              </Link>
-            </div>
-
-            {/*Second card*/}
-            <div
-              style={{
-                ...cardColor,
-                height: '300px',
-                width: '250px',
-                borderRadius: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '40px 24px',
-                opacity: 0.7,
-                zIndex: 1,
-                // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
-                boxSizing: 'border-box'
-              }}
-            >
-              {/* Icon placeholder */}
-              <div style={{ fontSize: '64px' }}>
-                {/* Insert your icon here */}
-                <img src="/graph.png" alt="" height={"100"} width={"100"} />
-              </div>
-
-              {/* Text */}
-              <div
-                style={{
-                  textAlign: 'center',
-                  fontSize: '20px',
-                  fontWeight: '500',
-                  lineHeight: '28px'
-                }}
-              >
-                Track balance and payments
-              </div>
-
-              {/* Arrow */}
-              <Link to='/feature' style={{ textDecoration: 'none' }}>
-                <div style={{ fontSize: '28px', marginLeft: '150px' }}>
-                  <img src="right-chevron.png" alt="" height={50} width={50} />
-                </div>
-              </Link>
-            </div>
-
-            {/*Third card*/}
-            <div
-              style={{
-                ...cardColor,
-                height: '300px',
-                width: '250px',
-                borderRadius: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '40px 24px',
-                opacity: 0.7,
-                zIndex: 1,
-                // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
-                boxSizing: 'border-box'
-              }}
-            >
-              <div style={{ fontSize: '64px' }}>
-                {/* Insert your icon here */}
-                <img src="/graph.png" alt="" height={"100"} width={"100"} />
-              </div>
-
-              {/* Text */}
-              <div
-                style={{
-                  textAlign: 'center',
-                  fontSize: '20px',
-                  fontWeight: '500',
-                  lineHeight: '28px'
-                }}
-              >
-                Track balance and payments
-              </div>
-
-              {/* Arrow */}
-              <Link to='/feature' style={{ textDecoration: 'none' }}>
-                <div style={{ fontSize: '28px', marginLeft: '150px' }}>
-                  <img src="right-chevron.png" alt="" height={50} width={50} />
-                </div>
-              </Link>
-            </div>
-
-            {/*Fourth card*/}
-            <div
-              style={{
-                ...cardColor,
-                height: '300px',
-                width: '250px',
-                borderRadius: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '40px 24px',
-                opacity: 0.7,
-                zIndex: 1,
-                // boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
-                boxSizing: 'border-box'
-              }}
-            >
-              {/* Icon placeholder */}
-              <div style={{ fontSize: '64px' }}>
-                {/* Insert your icon here */}
-                <img src="/group.png" alt="" height={"100"} width={"100"} />
-              </div>
-
-              {/* Text */}
-              <div
-                style={{
-                  textAlign: 'center',
-                  fontSize: '20px',
-                  fontWeight: '500',
-                  lineHeight: '28px'
-                }}
-              >
-                Create and manage groups
-              </div>
-
-              {/* Arrow */}
-              <Link to='/feature' style={{ textDecoration: 'none' }}>
-                <div style={{ fontSize: '28px', marginLeft: '150px' }}>
-                  <img src="right-chevron.png" alt="" height={50} width={50} />
-                </div>
-              </Link>
-            </div>
           </div>
         </>
       )

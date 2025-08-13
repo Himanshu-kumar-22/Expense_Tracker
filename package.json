@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/Himanshu-kumar-22/TopSecret#readme",
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@splinetool/react-spline": "^4.1.0",
     "cors": "^2.8.5",
+    "motion": "^12.23.12",
     "react": "^18.2.0",
     "react-calendar": "^6.0.0",
     "react-dom": "^18.2.0",
